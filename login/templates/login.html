@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+</head>
+
+<body>
+  <div class="login-container">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #fff;
+      }
+
+      .login-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+
+        width: 350px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 30px;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .input-group input[type="text"],
+      .password-container input[type="password"] {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #eeebeb;
+        border-radius: 10px;
+        outline: none;
+        box-sizing: border-box;
+        background: #f4f2f2;
+      }
+
+      .password-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .password-container .toggle-password {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        color: Black;
+        user-select: none;
+        font-weight: bold;
+      }
+
+      .password-container input[type="text"] {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #eeebeb;
+        border-radius: 10px;
+        outline: none;
+        box-sizing: border-box;
+        background: #f4f2f2;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      button:hover {
+        background-color: #333;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ~ Login Page */
+      .login-page {
+        min-height: 100vh;
+        font-family: 'UI - 30 Semi', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-container {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .login-container h2 {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 50px;
+        font-size: 30px;
+      }
+
+      .username-con-con,
+      .pass-con {
+        width: 100%;
+        height: 50px;
+        background-color: #f6f6f6;
+        margin-bottom: 20px;
+        border: 1px solid lightgray;
+        border-radius: 7px;
+      }
+
+      .username-con input,
+      .pass-con input {
+        height: 100%;
+        width: 75%;
+        border: none;
+        outline: none;
+        background-color: #f6f6f6;
+        margin-left: 15px;
+        font-size: 1.1rem;
+      }
+
+      .username-con input::placeholder,
+      .pass-con input::placeholder {
+        color: #bdbdbd;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      #show-btn {
+        border: none;
+        background-color: transparent;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .invalid {
+        color: red;
+        text-align: center;
+      }
+
+      #login-btn {
+        width: 100%;
+        height: 50px;
+        font-size: 1rem;
+        background-color: #000000;
+        color: #ffffff;
+        border-radius: 30px;
+        margin-top: 20px;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      /* ~ Index Page */
+
+      .container {
+        display: flex;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+      }
+
+      /* Left Side */
+
+      .container .buttons {
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: 600px;
+        position: relative;
+      }
+
+      .buttons .btn-cont {
+        width: 250px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        margin-top: 20px;
+      }
+
+      .btn-cont i {
+        margin-left: 30px;
+        font-size: 1.5rem;
+      }
+
+      .btn-cont .btn {
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        margin-left: 20px;
+        color: #000000;
+      }
+
+      .buttons .active {
+        background-color: #000000;
+        border-radius: 0 50px 50px 0;
+      }
+
+      .active i {
+        color: #ffffff;
+      }
+
+      .active .btn {
+        color: #ffffff;
+      }
+
+      .logout-btn {
+        position: absolute;
+        bottom: 4%;
+      }
+
+      /* Task Right Side */
+      .container .content {
+        flex: 1;
+        margin-left: 30px;
+        height: 600px;
+      }
+
+      .add-new-task {
+        height: 380px;
+      }
+
+      #btn-add {
+        margin-top: 35px;
+        border: none;
+        background-color: transparent;
+      }
+
+      .incomp {
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+
+      #btn-add,
+      .incomp {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .added-task {
+        margin-bottom: 15px;
+      }
+
+      .added-task input[name='added-checkbox'] {
+        cursor: pointer;
+      }
+
+      .added-task .current-task {
+        display: inline;
+        margin-left: 10px;
+        font-size: 15px;
+      }
+
+      .added-task .task-time {
+        margin-left: 25px;
+        font-size: 12px;
+      }
+
+      .added-task label.label-hide {
+        display: none;
+      }
+
+      .completed {
+        margin-top: 20px;
+        height: 190px;
+      }
+
+      .comp-p {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .completed-task {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #b9b9be;
+      }
+
+      .completed-task img {
+        width: 15px;
+      }
+
+      .completed-task label {
+        margin-left: 10px;
+      }
+
+      /* POPUP */
+      .popup-container {
+        width: 765px;
+        height: 470px;
+        background-color: #ffffff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid #bdbdbdcc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.3);
+        z-index: 999;
+      }
+
+      .popup-container p {
+        margin-top: 30px;
+        margin-left: 45px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .popup-container .all-details {
+        margin-top: 30px;
+        height: 250px;
+        /* background-color: rebeccapurple; */
+      }
+
+      .div-detail {
+        margin-left: 70px;
+        width: 80%;
+        border-bottom: 2px solid #bdbdbdcc;
+        line-height: 20px;
+        margin-bottom: 20px;
+      }
+
+      .div-detail img {
+        margin-left: 20px;
+      }
+
+      .div-detail input {
+        border: none;
+        outline: none;
+        padding-left: 5px;
+        font-size: 1.2rem;
+        padding-bottom: 20px;
+        width: 90%;
+      }
+
+      .descrip-div img {
+        margin-bottom: 70px;
+      }
+
+      .descrip-div textarea {
+        width: 90%;
+        height: 90px;
+        font-size: 1.3rem;
+        margin-left: 5px;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+
+      #fill-field {
+        color: red;
+        font-size: 0.9rem;
+        margin-left: 38%;
+        margin-top: 0;
+      }
+
+      .fill-hide {
+        display: none;
+      }
+
+      .save-cancel {
+        display: flex;
+        flex-direction: column;
+        width: 330px;
+        margin-left: 25%;
+        margin-top: 25px;
+      }
+
+      .save-cancel button {
+        border: none;
+        background-color: transparent;
+        font-size: 1.1rem;
+      }
+
+      .save-cancel #save-btn {
+        background-color: #000000;
+        color: #ffffff;
+        border-radius: 30px;
+        height: 40px;
+        margin-bottom: 15px;
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .popup-hide {
+        display: none;
+      }
+
+      /* To hide task side */
+      .content-hide {
+        display: none;
+      }
+
+      /* Reminder Popup */
+      div#reminder-popup-id.reminder-popup {
+        background-color: #ffffff;
+        width: 350px;
+        box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.3);
+        border-radius: 10px;
+        position: absolute;
+        left: 72%;
+        top: 5%;
+        z-index: 1000;
+      }
+
+      .summ-descrip-icon {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .summ-descrip-icon img {
+        padding-left: 15px;
+      }
+
+      #reminder-summary {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      #reminder-descrip {
+        color: #575767;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .reminder-btns {
+        height: 35px;
+        background-color: #f6f5f5;
+        border-radius: 0 0 10px 10px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      #skip-btn,
+      #remind-later-btn {
+        border: none;
+        background-color: transparent;
+      }
+
+      #remind-later-btn {
+        margin: 0 15px 0 15px;
+      }
+
+      .reminder-popup-hide {
+        display: none;
+      }
+
+      /* Location Right Side */
+      .container .location-container {
+        margin-left: 30px;
+        height: 600px;
+      }
+
+      .location-container #check {
+        margin-top: 35px;
+        border: none;
+        background-color: transparent;
+      }
+
+      .location-container #curr-loc {
+        margin-top: 20px;
+        margin-bottom: 15px;
+      }
+
+      .location-container #prev-loc {
+        margin-bottom: 15px;
+      }
+
+      #check,
+      #curr-loc,
+      #prev-loc {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .current-loc-con {
+        height: 80px;
+        /* background-color: saddlebrown; */
+      }
+
+      .current-loc-con>p {
+        color: red;
+      }
+
+      .current-loc-con>.error-hide {
+        display: none;
+      }
+
+      .previous-loc-con {
+        height: 60%;
+        /* background-color: aqua; */
+      }
+
+      .previous-loc-added {
+        margin-bottom: 15px;
+      }
+
+      .city {
+        display: inline-block;
+        margin-left: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .coordinates {
+        margin-left: 40px;
+        color: #b9b9be;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .location-container-hide {
+        display: none;
+      }
+
+      <script>document.getElementById('togglePassword').addEventListener('click', function() {
+          const passwordInput=document.getElementById('password');
+          const showPasswordText=document.getElementById('.togglePassword');
+
+          if (passwordInput.type==='password') {
+            passwordInput.type='text';
+            showPasswordText.textContent='Hide';
+          }
+
+          else {
+            passwordInput.type='password';
+            showPasswordText.textContent='Show';
+          }
+        });
+
+      document.getElementById('loginBtn').addEventListener('click', function() {
+          const username=document.getElementById('username').value;
+          const password=document.getElementById('password').value;
+          const errorMessage=document.getElementById('error');
+
+
+          const validusername='Shami@gmail.com';
+          const validPassword='shami@123';
+
+          if (username===validusername && password===validPassword) {
+
+            window.location.href='index.html';
+
+          }
+
+          else {
+            errorMessage.textContent='Invalid username or password.';
+            errorMessage.style.color='red';
+          }
+        });
+
+      const mainContainer=document.querySelector('.container');
+      const addTaskBtn=document.getElementById('btn-add');
+      const popupBox=document.querySelector('.popup-container');
+      const contentBox=document.querySelector('.content');
+      const locationContainer=document.querySelector('.location-container');
+      const taskDiv=document.querySelector('.task-btn');
+      const taskBtn=document.getElementById('task');
+      const locationDiv=document.querySelector('.location-btn');
+      const locationBtn=document.getElementById('location');
+      const logoutBtn=document.getElementById('logout');
+      const saveBtn=document.getElementById('save-btn');
+      const cancelBtn=document.getElementById('cancel-btn');
+      const summary=document.getElementById('summary-text');
+      const description=document.getElementById('descrip-text');
+      const dateTimeInput=document.getElementById('date-text');
+      const allAddedTasks=document.querySelector('.all-added-tasks');
+      const fillField=document.getElementById('fill-field');
+      const allCompleted=document.querySelector('.all-completed');
+      const reminderContainer=document.getElementById('reminder-popup-id');
+      const skipBtn=document.getElementById('skip-btn');
+      const reminLaterBtn=document.getElementById('remind-later-btn');
+      const checkInBtn=document.getElementById('check');
+      const currLocCon=document.querySelector('.current-loc-con');
+      const prevLocCon=document.querySelector('.previous-loc-con');
+
+      // Task Page
+      const showPopup=function () {
+        mainContainer.classList.add('overlay');
+        popupBox.classList.remove('popup-hide');
+      }
+
+      ;
+
+      const hidePopup=function () {
+        mainContainer.classList.remove('overlay');
+        popupBox.classList.add('popup-hide');
+      }
+
+      ;
+
+      const removingValues=function () {
+        summary.value='';
+        description.value='';
+        dateTimeInput.value='';
+      }
+
+      ;
+
+      const updateLocalStorage=function () {
+        localStorage.setItem('incompletedTasks', allAddedTasks.innerHTML);
+        localStorage.setItem('completedTasks', allCompleted.innerHTML);
+      }
+
+      ;
+
+      const addNewTask=function (summary, dateTime) {
+        const addedTaskDiv=document.createElement('div');
+        addedTaskDiv.classList.add('added-task');
+
+        const checkbox=document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.name='added-checkbox';
+
+        const currentTaskP=document.createElement('p');
+        currentTaskP.classList.add('current-task');
+        currentTaskP.textContent=summary.value;
+
+        const taskTimeP=document.createElement('p');
+        taskTimeP.classList.add('task-time');
+        const [addDateTime,
+        properTime]=dateTimeSet(dateTime.value);
+        taskTimeP.textContent=addDateTime;
+
+
+        const labelTime=document.createElement('label');
+        labelTime.classList.add('label-hide');
+        labelTime.textContent=properTime;
+
+
+        const textDescrip=document.createElement('label');
+        textDescrip.classList.add('label-hide');
+        textDescrip.id='text-area-descrip';
+        textDescrip.textContent=description.value;
+
+        addedTaskDiv.append(checkbox,
+          currentTaskP,
+          taskTimeP,
+          labelTime,
+          textDescrip);
+
+        const firstChild=allAddedTasks.firstChild;
+
+        allAddedTasks.insertBefore(addedTaskDiv, firstChild);
+        updateLocalStorage();
+      }
+
+      ;
+
+      const addCompletedTask=function (task) {
+        const completedTaskDiv=document.createElement('div');
+        completedTaskDiv.classList.add('completed-task');
+
+        const img=document.createElement('img');
+        img.src='Checked.png';
+        img.alt='Checked Image';
+        img.onload=()=>console.log('Image loaded successfully.');
+        img.onerror=()=>console.log('Failed to load image.');
+        document.body.appendChild(img);
+
+        const label=document.createElement('label');
+        label.textContent=task;
+
+        completedTaskDiv.append(img, label);
+
+        const firstOneChild=allCompleted.firstChild;
+
+        allCompleted.insertBefore(completedTaskDiv, firstOneChild);
+        updateLocalStorage();
+      }
+
+      ;
+
+      const dateTimeSet=function (dateWritten) {
+        const currentDateTime=new Date();
+        const writtenDateTime=new Date(dateWritten);
+
+        const properTime=`$ {
+          writtenDateTime.getHours()
+        }
+
+        ,
+        $ {
+          writtenDateTime.getMinutes()
+        }
+
+        ,
+        $ {
+          writtenDateTime.getDate()
+        }
+
+        ,
+        $ {
+          writtenDateTime.getMonth()
+        }
+
+        ,
+        $ {
+          writtenDateTime.getFullYear()
+        }
+
+        `;
+
+        const currentHour=writtenDateTime.getHours();
+        const currentMinutes=writtenDateTime.getMinutes();
+        const writtenDate=writtenDateTime.getDate();
+
+        const currentMonthName=writtenDateTime.toLocaleString('en-US', {
+          month: 'long',
+        });
+
+      currentDateTime.setHours(0, 0, 0, 0);
+      writtenDateTime.setHours(0, 0, 0, 0);
+
+      let dateTimeIs;
+
+      if (currentDateTime.getTime()===writtenDateTime.getTime()) {
+
+        dateTimeIs=`⏰ Today,
+        $ {
+          currentHour
+        }
+
+        :$ {
+          currentMinutes
+        }
+
+        `;
+      }
+
+      else if (writtenDateTime.getTime() - currentDateTime.getTime()===24 * 60 * 60 * 1000) {
+
+        dateTimeIs=`⏰ Tommorow,
+        $ {
+          currentHour
+        }
+
+        :$ {
+          currentMinutes
+        }
+
+        `;
+      }
+
+      else {
+        dateTimeIs=`⏰ $ {
+          writtenDate
+        }
+
+        $ {
+          currentMonthName
+        }
+
+        ,
+        $ {
+          currentHour
+        }
+
+        :$ {
+          currentMinutes
+        }
+
+        `;
+      }
+
+      console.log(dateTimeIs);
+
+      return [dateTimeIs,
+      properTime];
+      }
+
+      ;
+
+      const checkReminderTime=function () {
+        const d=new Date();
+
+        const dFormat=`$ {
+          d.getHours()
+        }
+
+        ,
+        $ {
+          d.getMinutes()
+        }
+
+        ,
+        $ {
+          d.getDate()
+        }
+
+        ,
+        $ {
+          d.getMonth()
+        }
+
+        ,
+        $ {
+          d.getFullYear()
+        }
+
+        `;
+
+        const addedTasksDivs=document.querySelectorAll('.added-task');
+
+        if (addedTasksDivs.length > 0) {
+          addedTasksDivs.forEach(div=> {
+              const currLabel=div.querySelector('label.label-hide').textContent;
+              console.log(currLabel, dFormat);
+
+              if (currLabel===dFormat) {
+                const currSummary=div.querySelector('.current-task').textContent;
+                const currDescription=div.querySelector('#text-area-descrip').textContent;
+                console.log('Date Arrived');
+                showReminder(currSummary, currDescription);
+              }
+            });
+        }
+      }
+
+      ;
+
+      setInterval(checkReminderTime, 50000);
+
+      const showReminder=function (summaryInput, descriptionText) {
+        reminderContainer.classList.remove('reminder-popup-hide');
+
+        document.getElementById('reminder-summary').textContent=summaryInput;
+        document.getElementById('reminder-descrip').textContent=descriptionText;
+      }
+
+      ;
+
+      // Location Page
+      const getLatLong=function () {
+        return new Promise(resolve=> {
+            if ('geolocation' in navigator) {
+              navigator.geolocation.getCurrentPosition(position=> {
+                  const latitude=position.coords.latitude;
+                  const longitude=position.coords.longitude;
+
+                  resolve([latitude, longitude]);
+                }
+
+                ,
+                ()=> resolve([29.3544, 71.6911]));
+            }
+
+            else resolve([29.3544, 71.6911]);
+          });
+      }
+
+      ;
+
+      const fetchData=async function (lat, lon) {
+        const apiKey='269e2523f92542e934133cd485093bd6';
+        const url=`https: //api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+        return fetch(url) .then(response=> {
+            return response.json();
+
+          }) .then(data=> {
+            return data;
+          }) .catch(()=> 'error');
+      }
+
+      ;
+
+      const displayFetchedData=function (lat, lon, name, state, country) {
+        const currentLocation=document.createElement('div');
+        currentLocation.classList.add('current-loc-added');
+
+        const label=document.createElement('label');
+        label.textContent='📍';
+
+        const cityInfo=document.createElement('p');
+        cityInfo.classList.add('city');
+
+        cityInfo.textContent=`$ {
+          name
+        }
+
+        ,
+        $ {
+          state
+        }
+
+        ,
+        $ {
+          country
+        }
+
+        `;
+
+        const coordinates=document.createElement('p');
+        coordinates.classList.add('coordinates');
+
+        coordinates.textContent=`$ {
+          lat
+        }
+
+        ° N,
+        $ {
+          lon
+        }
+
+        ° E`;
+
+        const existingCurrentLocation=currLocCon.querySelector('.current-loc-added');
+
+        if (existingCurrentLocation) {
+          existingCurrentLocation.classList.remove('current-loc-added');
+          existingCurrentLocation.classList.add('previous-loc-added');
+          prevLocCon.prepend(existingCurrentLocation);
+          localStorage.setItem('previousLocation', prevLocCon.innerHTML);
+        }
+
+        currentLocation.append(label, cityInfo, coordinates);
+
+        currLocCon.append(currentLocation);
+        localStorage.setItem('currentLocation', currLocCon.innerHTML);
+      }
+
+      ;
+
+      // Task
+      taskBtn.addEventListener('click', function () {
+          locationContainer.classList.add('location-container-hide');
+          locationDiv.classList.remove('active');
+          taskDiv.classList.add('active');
+          contentBox.classList.remove('content-hide');
+        });
+
+      addTaskBtn.addEventListener('click', function () {
+          showPopup();
+        });
+
+      saveBtn.addEventListener('click', function () {
+          if (summary.value && description.value && dateTimeInput.value) {
+            fillField.classList.add('fill-hide');
+            addNewTask(summary, dateTimeInput);
+            removingValues();
+            hidePopup();
+          }
+
+          else fillField.classList.remove('fill-hide');
+        });
+
+      cancelBtn.addEventListener('click', function () {
+          removingValues();
+          hidePopup();
+        });
+
+      allAddedTasks.addEventListener('click', function (event) {
+          const target=event.target;
+
+          // For Checkbox
+          if (target.tagName.toUpperCase()==='INPUT' && target.type==='checkbox' && target.name==='added-checkbox'
+
+          ) {
+            const parent=target.parentElement;
+            const currentTask=parent.querySelector('.current-task').textContent;
+
+            if (target.checked) {
+              parent.remove();
+              addCompletedTask(currentTask);
+            }
+          }
+        });
+
+      // Reminder popup
+      skipBtn.addEventListener('click', function () {
+          reminderContainer.classList.add('reminder-popup-hide');
+        });
+
+      reminLaterBtn.addEventListener('click', function () {
+          reminderContainer.classList.add('reminder-popup-hide');
+        });
+
+      // Location page
+      locationBtn.addEventListener('click', function () {
+          taskDiv.classList.remove('active');
+          locationDiv.classList.add('active');
+          locationContainer.classList.remove('location-container-hide');
+          contentBox.classList.add('content-hide');
+        });
+
+      checkInBtn.addEventListener('click', async function () {
+          checkInBtn.disabled=true;
+
+          const timeoutPromise=new Promise(resolve=> {
+              setTimeout(()=> {
+                  resolve([29.3544, 71.6911]);
+                }
+
+                , 5000);
+            });
+
+          try {
+            const [lati, long]=await Promise.race([getLatLong(), timeoutPromise]);
+            const dataFetched=await fetchData(lati, long);
+
+            const errorFetchP=document.querySelector('.current-loc-con > p');
+
+            if (dataFetched==='error') {
+              errorFetchP.classList.remove('error-hide');
+            }
+
+            else {
+              errorFetchP.classList.add('error-hide');
+
+              const {
+                lat, lon, name, state, country
+              }
+
+              =dataFetched[0];
+              displayFetchedData(lat, lon, name, state, country);
+            }
+          }
+
+          finally {
+            checkInBtn.disabled=false;
+          }
+        });
+
+      // logout
+      logoutBtn.addEventListener('click', function () {
+          window.location.href='login.html';
+        });
+
+      // On load local storage load
+      window.onload=()=> {
+        const {
+          incompletedTasks,
+          completedTasks,
+          currentLocation,
+          previousLocation,
+        }
+
+        =localStorage;
+
+        if (incompletedTasks) allAddedTasks.innerHTML=incompletedTasks;
+        if (completedTasks) allCompleted.innerHTML=completedTasks;
+        if (currentLocation) currLocCon.innerHTML=currentLocation;
+        if (previousLocation) prevLocCon.innerHTML=previousLocation;
+      }
+
+      ;
+
+      </script>
+    </style>
+    <h2>Log In</h2>
+    <form id="loginForm" method="post" action="/login">
+      {% csrf_token %}
+      <div class="input-group">
+        <input type="text" name="username" placeholder="Username" id="username" required>
+      </div>
+      <div class="input-group">
+        <div class="password-container">
+          <input type="password" name="password" placeholder="Password" id="password" required>
+          <span id="togglePassword" class="toggle-password">Show</span>
+        </div>
+      </div>
+      <button type="submit" id="login">Sign In</button>
+    </form>
+    <p id="error" class="error-message"></p>
+  </div>
+
+</body>
+</html>
